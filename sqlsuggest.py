@@ -3,7 +3,7 @@ import speech_recognition as sr
 from datetime import datetime
 
 
-apikey = "aaaaaaaaaaaaaa"
+apikey = "aaaaaaaaaaaaaaa"
 client = pya3rt_v1.SQLSuggestClient(apikey)
 
 #ログとしてテキストに保存する
@@ -35,7 +35,7 @@ while True:
             break
         else:
             print(r.recognize_google(audio, language='ja-JP'))
-            print(client.sql_suggest(r.recognize_google(audio, language='ja-JP')))
+            print(client.sql_suggest(r.recognize_google(audio, language='ja-JP')).get('sql'))
 
             #ファイルに内容追加する
             with open(txt,"a",newline='\n') as f:
@@ -45,6 +45,6 @@ while True:
 
     # 以下は認識できなかったときに止まらないように。
     except sr.UnknownValueError:
-        print("could not understand audio")
+        print("読み取れませんでした")
     except sr.RequestError as e:
-        print("Could not request results from Google Speech Recognition service; {0}".format(e))
+        print("Google Speech Recognition serviceは結果を返せませんでした; {0}".format(e))
