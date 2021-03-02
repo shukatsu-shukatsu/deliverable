@@ -1,0 +1,101 @@
+text,sql
+データーベースを作って,CREATE DATABASE <schema>
+テーブルを作って,CREATE TABLE <schema>.<table>(<column> <data_type>)
+主キーを追加して,ALTER TABLE <schema>.<table> ADD PRIMARY KEY(<column>)
+ユニークキーを追加して,ALTER TABLE <schema>.<table> add unique (<column>)
+インデックスを追加して,ALTER TABLE <schema>.<table> add unique (<column>)
+外部キーを追加して,ALTER TABLE <schema>.<table> ADD FOREIGN KEY (<column>) REFERENCES <schema>.<table>(<column>)
+非null制約を追加して,ALTER TABLE <schema>.<table> MODIFY COLUMN DESCRIPTION <column> <data_type> NOT NULL
+カラムを追加して,ALTER TABLE <schema>.<table> ADD <column> <data_type> <initial_value>
+主キーを削除して,ALTER TABLE <schema>.<table> DROP PRIMARY KEY
+ユニークキーを削除して,ALTER TABLE <schema>.<table> DROP INDEX <column>
+インデックスを削除して,ALTER TABLE <schema>.<table> DROP INDEX <column>
+外部キーを削除して,ALTER TABLE <schema>.<table> DROP FOREIGN KEY <column>;
+非null制約をして削除,ALTER TABLE <schema>.<table> MODIFY COLUMN <column> <data_type> NOT NULL
+カラムを削除して,ALTER TABLE <schema>.<table> DROP COLUMN <column>
+テーブル名を変更したい,ALTER TABLE <schema>.<table> RENAME TO <schema>.<new_table>
+ユニークキーを変更して,ALTER TABLE <schema>.<table> RENAME INDEX <old_column> TO <new_column>
+インデックスを変更して,ALTER TABLE <schema>.<table> RENAME INDEX <old_column> TO <new_column>
+カラム名を変更して,ALTER TABLE <schema>.<table>RENAME COLUMN <old_column> TO <new_column>
+すべてのカラムを抜き出して,SELECT * WHERE dt=<data>
+<date>の社員IDは何だっけ,SELECT employee_id WHERE dt = <date>
+<date>の社員コードは何だっけ,SELECT employee_code WHERE dt = <date>
+<date>の社員の名前は何だっけ,SELECT employee_name WHERE dt = <date>
+<date>の社員フリガナは何だっけ,SELECT employee_name_kana WHERE dt = <date>
+<date>の社員の部署は何だっけ,SELECT employee_department _id WHERE dt = <date>
+<date>の社員のメールアドレスは何だっけ,SELECT employee_mail WHERE dt = <date>
+<date>の社員は在籍していますか,SELECT employee_status WHERE dt = <date>
+今使っているデーターベースを教えて,select database()
+文字コードを教えて,"show variables like ""chara%"""
+MySQL で設定可能な文字コードを教えて,show character set
+作成済みのユーザーを教えて,"select user, host from mysql.user"
+今使用しているユーザーを教えて,select current_user()
+作成したユーザーのクリエイト文を教えて,SHOW CREATE USER <user>
+ユーザーの権限を確認したい,SHOW GRANTS FOR　<user>
+ユーザーのパスワードを変更したい,set password for'<user>@localhost'=PASSWORD('<password>')
+ユーザーのパスワードを失効したい,ALTER USER <user> PASSWORD EXPIRE
+新しくユーザーにパスワードをつけたい,alter user <user> identified by '<password>'
+既存のユーザーのパスワードに有効期限をつけたい,ALTER USER <user> PASSWORD EXPIRE INTERVAL <N> DAY
+新規ユーザーにパスワードの有効期限をつけたい,CREATE USER <user> identified by '<PASSWORD>' EXPIRE INTERVAL <N> DAY
+既存のユーザーのパスワードに再利用の制限をつけたい,ALTER USER <user> PASSWORD HISTORY <N>
+新規ユーザーにパスワードのをつけたい再利用の制限をつけたい,CREATE USER <user> identified by '<PASSWORD>' HISTORY N
+ユーザー名を変更したい,RENAME USER <old_user> TO <new_user>
+ユーザーを削除したい,DROP USER <user>
+ユーザーをロックしたい,ALTER USER <user> ACCOUNT LOCK
+ユーザーのロックを解除したい,ALTER USER <user> ACCOUNT UNLOCK
+ユーザーに権限を設定したい,GRANT <priv_type> ON <priv_level> TO <user>
+ユーザーの権限を削除したい,REVOKE <priv_type>ON <priv_level> FROM <user>
+ユーザーの認証プラグイン設定の確認をしたい,plugin from mysql.user where user = <'user'>
+認証プラグインを使ってユーザーを作成したい,CREATE USER <user> IDENTIFIED WITH <auth_plugin> BY <'password'>
+既存のユーザーの認証プラグインを変更したい,ALTER USER <user> IDENTIFIED WITH <auth_plugin> BY <'password'>
+テーブルを確認したい,show tables from <db>
+データーベースの一覧確認したい,show databases
+データベースを変更したい,use <db>
+今使っているデーターベースを教えて,select database()
+データベースを削除したい,drop database <db>
+新規ユーザーを作りたい,CREATE USER user IDENTIFIED BY '<password>'
+作成済みのユーザーを教えて,select * from mysql.user
+ユーザーの権限を確認したい,SHOW GRANTS FOR <user>
+テーブルのカラムを確認したい,show columns from <db>
+テーブルを削除したい,drop table <table>
+ヌルを許可しないテーブルを作りたい,create table <table>(<column> <kata> not null)
+デフォルト値をつけてテーブルを作りたい,create table <table>(<column> <kata> default <data>)
+デフォルト値に関数を使ってテーブルを作りたい,create table <table>(<column> <kata> default  (<kansu>))
+オートインクリメントをつけてテーブルを作りたい,create table staff(<coulmn> <katak> auto_increment;
+オートインクリメントを指定したカラムの次の値を確認したい,select AUTO_INCREMENT from information_schema.tables where table_schema='<db>' and table_name='<table>'
+オートインクリメントに初期値を設定したい,create table <table>(id int auto_increment) auto_increment=20
+オートインクリメントの値をリセットしたい,ALTER TABLE tbl_name AUTO_INCREMENT = <data>
+テーブルにコメントを残したい,create table <table>(<column> <kata>) comment='<comment>'
+カラムにコメントを残したい,create table <table>(<column> <kata>comment '<comment>')
+プライマリーキーを設定してテーブルを作りたい,create table <table>(<column> <kata> not null primary key)
+スーパーキーを設定してテーブルを設定したい,"create table <table>(<column> <kata> not null,<column> <kata> not  null primary key(<column>,<column>))"
+ユニークキーを設定してテーブルを作りたい,create table <table>(<column> <kata> unique)
+複数のカラムを組み合わせてユニークキーを設定してテーブルを作りたい,"create table <table>(<column> <kata>,<column> <kata>, unique <index_name>(<column>,<column>))"
+インデックスを作成してテーブルを作りたい,create table <table>(<column> <kata> index <index_name>(<column>))
+複数のカラムを組み合わせてインデックスを作成しテーブルを作りたい,"create table <table>(<column> <kata>,<column> <kata>,index  <index_name> (<column>,<column>))"
+外部キーを設定してテーブルを作りたい,create table <table>(<column> <kata> foreign key <ondex_name>(<column>))
+別のテーブルの定義をコピーしてテーブルを作りたい,create table <table> like <table>
+別のテーブルの指定したカラムの定義とデータから新しいテーブルを作りたい,create table <table> as select <column> from <table>
+インデックスを作成したい,create index <index_name> on <table>(<column>)
+ユニークインデックスを作成したい,create unique index <index_name> on <table>(<column>)
+インデックスを作成したい,alter table <table> add index <index_name>(<column>)
+ユニークインデックスを作成したい,alter table <table> add unique index <index_name>(<column>)
+プライマリーキーを作成したい,alter table <table> add primary key (<column>)
+インフォメーションスキーマスタティスティックスが知りたい,"select table_schema, table_name, column_name, index_name from information_schema.statistics where table_schema='<schema>'"
+作成済みのインデックスの情報を知りたい,show index from <table>
+値の一部だけを使ってインデックスを作成したい,create index <index_name> on <table>(<column>(length))
+ビューを作成したい,create view <view_name> as <data>
+ビューのカラム名を設定したい,create view <view_name> (<column>) as <data>
+作成済みのビューの一覧を確認したい,show tables from <table>
+インフォメーションスキーマデータベースのビューテーブルを参照したい,select * from  information_schema.views where table.shhema='<schema>'
+作成したビューと同じビューを作成するためのクリエイト文を確認したい,show create view <view_name>
+ビューを削除したい,drop view <view_name>
+ビューを変更したい,alter view <view_name> as <data>
+ビューを変更したい,create or replace view <view_name> as <data>
+トリガーを作成したい,create trigger <trigger_name> on <table> for each row <data>
+一つのトリガーで複数のSQL分を実行したい,delimiter // create trigger <trigger_name> on <table> for each row begin <data>; <data>; end;// delimiter ;
+トリガーの一覧を確認したい,show triggers
+作成済みのトリガーと同じトリガーを作成するためのクリエイト文を確認したい,show create trigger <trigger_name>
+インフォメーションスキーマデーターベースのトリガーテーブルを参照したい,select * from information_schema.trigger where trigger_schema='<schema>' and trigger_name='<trigger_name>'
+トリガーの中で追加や削除されるデータのカラムを参照したい,delimiter // create trigger <trigger_name> after insert on <column> for each row begin select <column1> into @<table> where <column2>=new.<column2>; set @<table> = @<table> -1; update <table> set <column1>=@<table> where <column2>=new.<column2>; end;// delimiter ;
+トリガーを削除したい,drop trigger <trigger_name>
